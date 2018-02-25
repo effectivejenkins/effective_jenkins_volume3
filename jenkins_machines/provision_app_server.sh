@@ -18,8 +18,10 @@ sudo echo "%deploy ALL=(ALL) ALL" >> /etc/sudoers
 sudo apt-get update
 sudo apt-get install -y default-jdk
 
+mkdir -p /home/jenkins/.ssh
+sudo chown -R jenkins.jenkins /home/jenkins/.ssh
+
 # Prepare folder to deploy the app
-sudo chown -R jenkins.jenkins /home/jenkins/
 sudo chgrp deploy /opt/
 sudo chmod -R g+rwx /opt/
 sudo mkdir -p /opt/app
