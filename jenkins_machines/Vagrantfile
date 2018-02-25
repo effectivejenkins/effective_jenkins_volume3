@@ -13,7 +13,8 @@ Vagrant.configure("2") do |config|
     jenkins_master.vm.network "forwarded_port", guest: 8080, host: 8080
     jenkins_master.vm.hostname = "jenkins-master"
 
-    jenkins_master.vm.provision 'shell', inline: "echo '#{ssh_key}' >> /var/lib/jenkins/.ssh/id_rsa"
+    jenkins_master.vm.provision 'shell', inline: 'mkdir -p /var/lib/jenkins/.ssh/'
+    jenkins_master.vm.provision 'shell', inline: "echo '#{ssh_key}' > /var/lib/jenkins/.ssh/id_rsa"
     jenkins_master.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /var/lib/jenkins/.ssh/id_rsa.pub"
 
     # jenkins_master.vm.provision 'shell', inline: "echo #{jenkins_init_config} >> /var/lib/jenkins/init.groovy.d/security.groovy"
