@@ -22,7 +22,7 @@ Vagrant.configure("2") do |config|
     jenkins_node1.vm.network "private_network", ip: "192.168.50.5"
     jenkins_node1.vm.hostname = "jenkins-node1"
     jenkins_node1.vm.provision "shell", path: "provision_jenkins_node1.sh"
-    jenkins_node1.vm.provision 'shell', inline: "echo '#{ssh_key}' > /var/lib/jenkins/.ssh/id_rsa"
+    jenkins_node1.vm.provision 'shell', inline: "echo '#{ssh_key}' > /home/jenkins/.ssh/id_rsa"
     jenkins_node1.vm.provision 'shell', inline: "echo #{ssh_pub_key} >> /home/jenkins/.ssh/authorized_keys"
     jenkins_node1.vm.provision "shell", path: "fix_ssh_dir_permission.sh", :args => "/home/jenkins"
   end
