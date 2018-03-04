@@ -34,11 +34,10 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 sudo apt-get install -y vim curl python-software-properties
 sudo apt-get update
 sudo apt-get -y install mysql-server
-sed -i "s/^bind-address/#bind-address/" /etc/mysql/my.cnf
+sed -i "s/^bind-address/#bind-address/" /etc/mysql/mysql.conf.d/mysqld.cnf
 mysql -u root -proot -e "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'root' WITH GRANT OPTION; FLUSH PRIVILEGES; SET GLOBAL max_connect_errors=10000;"
 mysql -u root -proot -e "CREATE DATABASE IF NOT EXISTS user_mgt"
 mysql -u root -proot -e "GRANT ALL PRIVILEGES ON user_mgt.* TO 'springuser'@'%' IDENTIFIED BY 'xXuVBAnXsRm3R2eT' WITH GRANT OPTION; FLUSH PRIVILEGES; SET GLOBAL max_connect_errors=10000;"
-sudo sed -i 's/127\.0\.0\.1/0\.0\.0\.0/g' /etc/mysql/mysql.conf.d/mysqld.cnf
 sudo /etc/init.d/mysql restart
 
 # sudo reboot
