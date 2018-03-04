@@ -49,10 +49,6 @@ sudo apt-get install -y default-jdk
 # Add Machines to known_hosts
 mkdir -p ${JENKINS_HOME}/.ssh
 sudo chown -R jenkins.jenkins ${JENKINS_HOME}/.ssh
+sudo chmod 600 ${JENKINS_HOME}/.ssh/id_rsa*
 ssh-keyscan -H 192.168.50.5 >> ${JENKINS_HOME}/.ssh/known_hosts
 ssh-keyscan -H 192.168.50.6 >> ${JENKINS_HOME}/.ssh/known_hosts
-
-# sudo chown -R jenkins ${JENKINS_HOME}/.ssh/
-# chmod 600 ${JENKINS_HOME}/.ssh/id_rsa*
-
-# sudo reboot
