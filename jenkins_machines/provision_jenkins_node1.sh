@@ -40,6 +40,4 @@ sudo apt-get install -y docker-ce
 
 # Add Machines to known_hosts
 mkdir -p ${JENKINS_USER_HOME}/.ssh
-sudo chown -R jenkins.jenkins ${JENKINS_USER_HOME}/.ssh
-sudo chmod 600 ${JENKINS_USER_HOME}/.ssh/id_rsa*
 ssh-keyscan -H 192.168.50.6 >> ${JENKINS_USER_HOME}/.ssh/known_hosts

@@ -25,9 +25,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 unstash 'package'
-                sh "ssh jenkins@192.168.50.6 'pkill jenkins_3_database_migration*'"
-                sh 'scp build/libs/*.jar jenkins@192.168.50.6:/opt/app/'
-                sh "ssh jenkins@192.168.50.6 'nohup java -jar /opt/app/jenkins_3_database_migration-*.jar &'"
+                sh 'scp build/libs/*.jar jenkins@192.168.50.6:/opt/app/jenkins_3_database_migration.jar'
+                sh "ssh jenkins@192.168.50.6 'sudo systemctl restart jenkins_3_database_migration.service'"
             }
         }
     }

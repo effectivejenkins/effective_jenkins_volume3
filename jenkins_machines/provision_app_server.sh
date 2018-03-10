@@ -40,4 +40,6 @@ mysql -u root -proot -e "CREATE DATABASE IF NOT EXISTS user_mgt"
 mysql -u root -proot -e "GRANT ALL PRIVILEGES ON user_mgt.* TO 'springuser'@'%' IDENTIFIED BY 'xXuVBAnXsRm3R2eT' WITH GRANT OPTION; FLUSH PRIVILEGES; SET GLOBAL max_connect_errors=10000;"
 sudo /etc/init.d/mysql restart
 
+sudo systemctl daemon-reload
+
 # sudo reboot
